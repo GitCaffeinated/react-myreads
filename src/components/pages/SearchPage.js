@@ -1,11 +1,23 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 class SearchPage extends React.Component {
 	render() {
 		return (
-			<p> Search Page </p>
-			)
+          <div className="search-books">
+            <div className="search-books-bar">
+              <NavLink to= '/'	className="close-search">Close</NavLink>
+              <div className="search-books-input-wrapper">
+               <input type="text" placeholder="Search by title or author"/>
+              </div>
+            </div>
+            <div className="search-books-results">
+              <ol className="books-grid"></ol>
+            </div>
+          </div>
+        );
 	}
-} // put this into app.js like the main page is but wiht /search
+} 
 
 export default SearchPage;
+//create little icon saying "No results"
