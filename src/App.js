@@ -1,10 +1,9 @@
 import React from 'react'
-import * as BooksAPI from './BooksAPI'
 import './App.css'
 import {Route} from 'react-router-dom'
 import MainPage from './components/pages/MainPage.js'
 import SearchPage from './components/pages/SearchPage.js'
-//does this have to be on a different page? The render can only have one return
+
 class BooksApp extends React.Component {
   state = {
     /**
