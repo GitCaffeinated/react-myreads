@@ -1,8 +1,8 @@
-import React from 'react'
-import './App.css'
-import {Route} from 'react-router-dom'
 import MainPage from './components/pages/MainPage.js'
+import React from 'react'
+import {Route} from 'react-router-dom'
 import SearchPage from './components/pages/SearchPage.js'
+import './App.css'
 
 class BooksApp extends React.Component {
   state = {
