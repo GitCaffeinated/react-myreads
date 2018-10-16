@@ -14,7 +14,7 @@ class MainPage extends React.Component {
   componentDidMount(){
     BooksAPI.getAll().then(BookList=>(
       this.setState({books: BookList})
-      ))
+      )) //update in return
   }
 
 
@@ -26,8 +26,8 @@ class MainPage extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <Shelf />
-              <Book />
+              <Shelf books={this.state.books.filter(b => b.shelf ==="CurrentlyReading"}/>
+                <Book />
             </div>
             <div className="open-search">
               <NavLink to='/search' className="to-search-bar">Add a book</NavLink>
