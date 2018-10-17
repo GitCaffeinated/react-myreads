@@ -7,11 +7,12 @@ import * as BooksAPI from '../../BooksAPI'
 
 class MainPage extends React.Component {
     //used lesson 4 as template
-  state = {
+ state = {
    books: []
 }
 
-  componentDidMount(){
+
+  componentDidMount() {
     BooksAPI.getAll().then(BookList=>(
       this.setState({books: BookList})
       )) //update in return
@@ -26,8 +27,10 @@ class MainPage extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <Shelf books={this.state.books.filter(b => b.shelf ==="CurrentlyReading"}/>
-                <Book />
+              <Shelf title="Want to Read" books={this.state.books.filter(books => books.shelf === "WantToRead")}/>
+              <Shelf title="Currently Reading" books={this.state.books.filter(books => books.shelf === "CurrentlyReading")}/>
+              <Shelf title="Read" books={this.state.books.filter(books => books.shelf === "Read")}/>
+              <Shelf title="Did Not Finish" books={this.state.books.filter(books => books.shelf === "DidNotFinish")}/>
             </div>
             <div className="open-search">
               <NavLink to='/search' className="to-search-bar">Add a book</NavLink>
