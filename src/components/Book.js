@@ -3,7 +3,7 @@ import React from 'react'
 class Book extends React.Component {
    state = {
    style: '',
-   backgroundImage: ''
+   backgroundImage: ``
 }
 
   render() {

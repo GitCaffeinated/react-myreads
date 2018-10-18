@@ -1,4 +1,3 @@
-import Book from '../Book'
 import { NavLink } from 'react-router-dom'
 import React from 'react'
 import Shelf from '../Shelf'
@@ -15,8 +14,7 @@ class MainPage extends React.Component {
   componentDidMount() {
     BooksAPI.getAll().then(BookList=>(
       this.setState({books: BookList})
-      )) //update in return
-  }
+      ) ) }
 
 
 
