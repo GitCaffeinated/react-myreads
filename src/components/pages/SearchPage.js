@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
-import React from 'react'
+import React, { Component } from 'react'
 
-class SearchPage extends React.Component {
+class SearchPage extends Component {
 	render() {
 		return (
           <div className="search-books">

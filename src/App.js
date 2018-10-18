@@ -1,10 +1,10 @@
 import MainPage from './components/pages/MainPage.js'
-import React from 'react'
+import React, { Component } from 'react'
 import {Route} from 'react-router-dom'
 import SearchPage from './components/pages/SearchPage.js'
 import './App.css'
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   state = {
     /**
      * TODO: Instead of using this state variable to keep track of which page

@@ -1,7 +1,7 @@
 import Book from './Book.js'
-import React from 'react'
+import React, { Component } from 'react'
 
-class Shelf extends React.Component {
+class Shelf extends Component {
 
 componentDidMount(){
   console.log(this);
@@ -13,7 +13,7 @@ componentDidMount(){
         <h2 className="bookshelf-title">{this.props.title}</h2>
         <div className="bookshelf-books">
         <ol className= "books-grid">
-          <Book chosenBook={this.state.books.filter((book) => book.shelf={book.shelf}) /> ) }
+          <Book {this.props.title((book) => book.shelf={book.shelf}) /> ) }
         </ol>
         </div>
     </div>

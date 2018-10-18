@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-class Book extends React.Component {
+class Book extends Component {
    state = {
    style: '',
    backgroundImage: ``
