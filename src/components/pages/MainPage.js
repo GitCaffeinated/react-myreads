@@ -20,7 +20,7 @@ class MainPage extends React.Component {
 
 
 	render() {
-    console.log(this.state.books)
+    
 		return (
           <div className="list-books">
             <div className="list-books-title">
