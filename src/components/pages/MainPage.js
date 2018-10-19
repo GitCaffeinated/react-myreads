@@ -13,13 +13,14 @@ class MainPage extends React.Component {
 
 
   componentDidMount() {
-    BooksAPI.getAll().then(BookList=>(
-      this.setState({books: BookList})
-      ) ) }
+    BooksAPI.getAll().then((books)=>{
+          this.setState({books: books})}
+       ) }
 
 
 
 	render() {
+    console.log(this.state.books)
 		return (
           <div className="list-books">
             <div className="list-books-title">
