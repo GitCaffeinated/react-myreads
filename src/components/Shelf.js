@@ -13,7 +13,7 @@ componentDidMount(){
         <h2 className="bookshelf-title">{this.props.title}</h2>
         <div className="bookshelf-books">
         <ol className= "books-grid">
-          <Book {this.props.title((book) => book.shelf={book.shelf}) /> ) }
+           {this.props.books.map((book) => <Book book={book} />) }
         </ol>
         </div>
     </div>

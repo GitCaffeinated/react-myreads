@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 
 class Book extends Component {
    state = {
-   style: '',
-   backgroundImage: ``
+     style: '',
+     backgroundImage: ``,
+     bookTitle: ''
 }
 
   render() {
