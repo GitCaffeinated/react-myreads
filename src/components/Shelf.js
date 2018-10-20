@@ -14,7 +14,7 @@ componentDidMount(){
         <h2 className="bookshelf-title">{this.props.title}</h2>
         <div className="bookshelf-books">
         <ol className= "books-grid">
-        {this.props.books.filter((book) => book.shelf === 'wantToRead').map(book => 
+        {this.props.books.filter((book) => book.shelf === book.shelf).map(book => 
          (
              <li key={book.id}>
              <Book book={book}/>
