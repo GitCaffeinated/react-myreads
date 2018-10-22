@@ -104,12 +104,14 @@ body, .app {
 }
 
 /* books grid */
+.average-rating {
+  color: #999;
+}
 
 .books-grid {
   list-style-type: none;
   padding: 0;
   margin: 0;
-
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -123,7 +125,8 @@ body, .app {
   width: 140px;
 }
 .book-title,
-.book-authors {
+.book-authors 
+.average-rating {
   font-size: 0.8em;
 }
 .book-title {
@@ -138,6 +141,17 @@ body, .app {
   height: 200px;
   display: flex;
   align-items: flex-end;
+}
+span {
+  display: none;
+  height: 100%;
+}
+
+.book-top:hover span{
+  background-color: white;
+  display: block;
+  font-size: 10px;
+  overflow: auto;
 }
 
 .book-shelf-changer {

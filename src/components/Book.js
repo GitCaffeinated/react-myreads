@@ -7,6 +7,7 @@ class Book extends React.Component {
         return (
           <div className="book">
             <div className="book-top">
+              <span>{this.props.book.description}   </span>
               <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")` }}></div>
               <div className="book-shelf-changer">
                 <select>
@@ -21,6 +22,7 @@ class Book extends React.Component {
               </div>
             <div className="book-title">{this.props.book.title}</div>
             <div className="book-authors">{this.props.book.authors}</div>
+            <div className="average-rating">{this.props.book.averageRating}</div>
           </div>
 
         ) } }

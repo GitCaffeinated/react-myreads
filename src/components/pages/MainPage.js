@@ -4,20 +4,16 @@ import Shelf from '../Shelf'
 import Book from '../Book'
 import * as BooksAPI from '../../BooksAPI'
 
-
 class MainPage extends React.Component {
     //used lesson 4 as template
  state = {
    books: []
 }
 
-
   componentDidMount() {
     BooksAPI.getAll().then((books)=>{
           this.setState({books: books})}
-       ) }
-
-
+    ) }
 
 	render() {
 
@@ -36,7 +32,6 @@ class MainPage extends React.Component {
               <NavLink to='/search' className="to-search-bar">Add a book</NavLink>
             </div>
           </div>
-   
       );}
     }
 
