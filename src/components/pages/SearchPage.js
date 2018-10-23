@@ -20,4 +20,3 @@ class SearchPage extends Component {
 } 
 
 export default SearchPage;
-//create little icon saying "No results"

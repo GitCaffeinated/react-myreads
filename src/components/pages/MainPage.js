@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom'
-import React from 'react'
+import React, { Component } from 'react'
 import Shelf from '../Shelf'
 import Book from '../Book'
 import * as BooksAPI from '../../BooksAPI'
 
-class MainPage extends React.Component {
-    //used lesson 4 as template
+class MainPage extends Component {
  state = {
    books: []
 }

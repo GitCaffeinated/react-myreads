@@ -15,12 +15,12 @@ componentDidMount(){
         <div className="bookshelf-books">
         <ol className= "books-grid">
         {this.props.books.filter((book) => book.shelf === book.shelf).map(book => 
-         (
+           (
              <li key={book.id}>
              <Book book={book}/>
              </li>
-            )
-          )}
+           )
+        )}
         </ol>
         </div>
     </div>
