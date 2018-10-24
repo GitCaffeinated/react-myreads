@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 
+import * as BooksAPI from './../BooksAPI'
+
+
 class Book extends Component {
 
   state={ //empty to receive user imput
          value: ''
        };    
 
-   editShelf = (book, shelf) => {
-        update(book, shelf); //change state of bookshelf from click- used react documentation
-      }
+        updateShelf = (book, shelf) => {
+          update(book, shelf);
+        }
 
   render() {
 
@@ -18,9 +21,7 @@ class Book extends Component {
               <span>{this.props.book.description}</span>
               <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")` }}></div>
               <div className="book-shelf-changer">
-                <select value={this.state.value} onChange={this.props.editShelf(
-                      this.props.book, this.props.shelf
-                    )}>
+                <select value={this.state.value} onChange={(e) => this.props.updateShelf(this.props.book, e.target.value)}>
                   <option value="move" disabled>Move to...</option>
                   <option value="wantToRead">Want to Read</option>
                   <option value="currentlyReading">Currently Reading</option>
