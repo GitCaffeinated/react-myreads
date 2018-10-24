@@ -2,18 +2,15 @@ import React, { Component } from 'react'
 
 class Book extends Component {
 
-  render() {
-
-      state={
+  state={ //empty to receive user imput
          value: ''
-       };
-       this.update=this.update.bind(this.state.book);
-       this.handleSubmit= this.handleSubmit.bind(this);
-   
+       };    
 
-   update(e) {
-    this.setState({value: e.target.value});
-   }
+   editShelf = (book, shelf) => {
+        update(book, shelf); //change state of bookshelf from click- used react documentation
+      }
+
+  render() {
 
         return (
           <div className="book">
@@ -21,10 +18,12 @@ class Book extends Component {
               <span>{this.props.book.description}</span>
               <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")` }}></div>
               <div className="book-shelf-changer">
-                <select value={this.state.value} onChange={this.update}>
+                <select value={this.state.value} onChange={this.props.editShelf(
+                      this.props.book, this.props.shelf
+                    )}>
                   <option value="move" disabled>Move to...</option>
-                  <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
+                  <option value="currentlyReading">Currently Reading</option>
                   <option value="read">Read</option>
                   <option value="didNotFinish">Did Not Finish</option>
                   <option value="none">None</option>
