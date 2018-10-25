@@ -17,7 +17,8 @@ componentDidMount(){
         {this.props.books.filter((book) => book.shelf === book.shelf).map(book => 
            (
              <li key={book.id}>
-             <Book book={book}/>
+             <Book book={book}
+             updateShelf={this.updateShelf}/>
              </li>
            )
         )}
