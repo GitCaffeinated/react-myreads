@@ -1,29 +1,9 @@
 import React, { Component } from 'react'
-
-import * as BooksAPI from './../BooksAPI'
+import MainPage from './pages/MainPage'
+import Shelf from './Shelf'
 
 
 class Book extends Component {
- 
-  state={ //empty to receive user imput
-         value: ''
-       };    
-
- updateShelf(){ (book, shelf) =>
-        BooksAPI.update(this.props.book, this.props.shelf);
-      }
-
- handleChange= update =>{
-    this.setState({value: this.target.value});
-  }
-
-  //used next set of commented out instead of lines 12-18- said syntax error
-
- //updateShelf(book, shelf) =>
-
-     // {BooksAPI.update(this.props.book, this.props.shelf;
-       //    this.setState({value: this.target.value});
-      //}
 
   render() {
 
@@ -31,9 +11,11 @@ class Book extends Component {
           <div className="book">
             <div className="book-top">
               <span>{this.props.book.description}</span>
-              <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")` }}></div>
+              <div className="book-cover" style={{ width: 128, height: 188, 
+                backgroundImage: `url("${this.props.book.imageLinks.thumbnail}")` }}></div>
               <div className="book-shelf-changer">
-                <select value={this.state.value} onChange={e => {this.props.updateShelf(this.state.book, e.target.value)}}>
+                <select value={this.props.book.value} onChange=
+                {(e) => this.props.updateShelf(this.props.book, e.target.value)}>
                   <option value="move" disabled>Move to...</option>
                   <option value="wantToRead">Want to Read</option>
                   <option value="currentlyReading">Currently Reading</option>

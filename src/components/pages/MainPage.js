@@ -6,13 +6,22 @@ import * as BooksAPI from '../../BooksAPI'
 
 class MainPage extends Component {
  state = {
-   books: []
+   books: [],
 }
 
   componentDidMount() {
     BooksAPI.getAll().then((books)=>{
           this.setState({books: books})}
     ) }
+
+     updateShelf=  (book, shelf) =>
+      { 
+        BooksAPI.update(book, shelf)
+        .then(resp => {book.shelf = shelf;
+          this.setState(state=> ({
+            books: state.books.filter(b=> b.id !== book.id).concat({book}) //filter through books- concat those not there
+          }));});}
+      
 
 	render() {
 
