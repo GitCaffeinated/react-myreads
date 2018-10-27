@@ -3,25 +3,9 @@ import React, { Component } from 'react'
 import Shelf from '../Shelf'
 import Book from '../Book'
 import * as BooksAPI from '../../BooksAPI'
+import BooksApp from '../../App'
 
-class MainPage extends Component {
- state = {
-   books: [],
-}
-
-  componentDidMount() {
-    BooksAPI.getAll().then((books)=>{
-          this.setState({books: books})}
-    ) }
-
-     updateShelf=  (book, shelf) =>
-      { 
-        BooksAPI.update(book, shelf)
-        .then(resp => {book.shelf = shelf;
-          this.setState(state=> ({
-            books: state.books.filter(b=> b.id !== book.id).concat({book}) //filter through books- concat those not there
-          }));});}
-      
+class MainPage extends Component {      
 
 	render() {
 
@@ -31,7 +15,7 @@ class MainPage extends Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <Shelf title="Want to Read" books={this.state.books.filter(books => books.shelf === "wantToRead")}/>
+              <Shelf title="Want to Read" this.props.books={this.state.books.filter(books => books.shelf === "wantToRead")}/>
               <Shelf title="Currently Reading" books={this.state.books.filter(books => books.shelf === "currentlyReading")}/>
               <Shelf title="Read" books={this.state.books.filter(books => books.shelf === "read")}/>
               <Shelf title="Did Not Finish" books={this.state.books.filter(books => books.shelf === "didNotFinish")}/>
