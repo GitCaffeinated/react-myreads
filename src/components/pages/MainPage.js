@@ -5,10 +5,11 @@ import Book from '../Book'
 import * as BooksAPI from '../../BooksAPI'
 import BooksApp from '../../App'
 
-class MainPage extends Component {   
+class MainPage extends Component {    
+
 
  state = {
-   books: [],
+ books: [],
 }
 
   componentDidMount() {
@@ -32,10 +33,10 @@ class MainPage extends Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <Shelf title="Want to Read" books={this.state.books.filter(books => books.shelf === "wantToRead")}/>
-              <Shelf title="Currently Reading" books={this.state.books.filter(books => books.shelf === "currentlyReading")}/>
-              <Shelf title="Read" books={this.state.books.filter(books => books.shelf === "read")}/>
-              <Shelf title="Did Not Finish" books={this.state.books.filter(books => books.shelf === "didNotFinish")}/>
+              <Shelf updateShelf = {this.updateShelf} title="Want to Read" books={this.state.books.filter(books => books.shelf === "wantToRead")}/>
+              <Shelf updateShelf = {this.updateShelf} title="Currently Reading" books={this.state.books.filter(books => books.shelf === "currentlyReading")}/>
+              <Shelf updateShelf = {this.updateShelf} title="Read" books={this.state.books.filter(books => books.shelf === "read")}/>
+              <Shelf updateShelf = {this.updateShelf} title="Did Not Finish" books={this.state.books.filter(books => books.shelf === "didNotFinish")}/>
             </div>
             <div className="open-search">
               <NavLink to='/search' className="to-search-bar">Add a book</NavLink>

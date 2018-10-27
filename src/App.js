@@ -6,15 +6,30 @@ import './App.css'
 import * as BooksAPI from './BooksAPI'
 
 class BooksApp extends Component {
- // does the props in the this.state books: have to be this.state?
+
+ state = {
+ books: [],
+}
+
+  componentDidMount() {
+    BooksAPI.getAll().then((books)=>{
+          this.setState({books: books})}
+    ) }
+
+ updateShelf=  (book, shelf) =>
+    { 
+      BooksAPI.update(book, shelf)
+      .then(resp => {book.shelf = shelf;
+        this.setState(props=> ({ //change shelf of books
+          books: props.books.filter((b)=> b.id !== book.id).concat(book) //filter through books- concat those not there
+        }))})}   
 
   render() {
 
     return(
       <div>
-      <MainPage />
-        <Route exact path="/" component= {MainPage}/>
-        <Route exact path="/search" component= {SearchPage}/>
+        <Route exact path="/" component= {MainPage} books = {this.state.books}/>
+        <Route exact path="/search" component= {SearchPage} updateShelf = {this.updateShelf}/>
       </div>
       );
  }
