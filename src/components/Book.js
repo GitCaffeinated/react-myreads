@@ -1,8 +1,4 @@
 import React, { Component } from 'react'
-import MainPage from './pages/MainPage'
-import Shelf from './Shelf'
-import * as BooksAPI from '../BooksAPI'
-
 
 class Book extends Component {
 

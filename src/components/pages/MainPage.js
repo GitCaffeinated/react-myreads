@@ -1,9 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import React, { Component } from 'react'
 import Shelf from '../Shelf'
-import Book from '../Book'
 import * as BooksAPI from '../../BooksAPI'
-import BooksApp from '../../App'
+
 
 class MainPage extends Component {    
 

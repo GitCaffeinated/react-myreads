@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import React, { Component } from 'react'
 import * as BooksAPI from '../../BooksAPI'
 import escapeRegExp from 'escape-string-regexp'
-import MainPage from './MainPage'
 import sortBy from 'sort-by'
 import Book from '../Book.js'
 
