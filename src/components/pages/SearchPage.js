@@ -6,7 +6,7 @@ import * as BooksAPI from '../../BooksAPI'
 class SearchPage extends Component {
 
  state = {
-   books: [],
+ books: [],
 }
 
   componentDidMount() {
@@ -20,7 +20,7 @@ class SearchPage extends Component {
       .then(resp => {book.shelf = shelf;
         this.setState(props=> ({ //change shelf of books
           books: props.books.filter((b)=> b.id !== book.id).concat(book) //filter through books- concat those not there
-        }))})}
+        }))})}   
 
 	render() {
 		return (

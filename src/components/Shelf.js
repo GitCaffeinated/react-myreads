@@ -20,7 +20,7 @@ componentDidMount(){
              <li key={book.id}>
              <Book book={book}
              updateShelf={this.props.updateShelf}
-             currentShelf= {this.props.shelf}/>
+             currentShelf= {this.shelf}/>
              </li>
            )
         )}
