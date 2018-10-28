@@ -28,18 +28,18 @@ class SearchPage extends Component {
           books: props.books.filter((b)=> b.id !== book.id).concat(book) //filter through books- concat those not there
         }))})}   
 
+  updateSearched= (query)=>{
+	if(this.state.query) {
+		const match = new RegExp(escapeRegExp(this.state.query), 'i')
+		 let searchResults = this.state.books.filter((book)=> match.test(this.state.books.title || this.state.books.author))
+		searchResults.sort(sortBy('name'))
+		console.log(searchResults);
+	} }
+
   search = (query) => {
   	this.setState({query: query.trim()})
-  	updateSearched(query)
+  	this.updateSearched(query)
   }
-
-	updateSearched= (query)=>{
-		if(this.state.query) {
-			const match = new RegExp(escapeRegExp(this.state.query), 'i')
-			 let searchResults = this.state.books.filter((book)=> match.test(this.state.books.title || this.state.books.author))
-			searchResults.sort(sortBy('name'))
-			console.log(searchResults);
-		} }
 
 	render() {
 
