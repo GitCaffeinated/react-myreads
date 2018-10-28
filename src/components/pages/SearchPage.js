@@ -36,10 +36,10 @@ class SearchPage extends Component {
               {JSON.stringify(this.state.query)}
                <input //update state and value of input field
                className="search-text"
-               	type="text" 
+               	type="text" //user enters text
                	placeholder="Search by title or author"
-               	value={this.state.query}
-               	onChange={(event) => this.updateQuery(event.target.value)}
+               	value={this.state.query} 
+               	onChange={(event) => this.updateQuery(event.target.value)} //calls setState to merge new state- rerenders
                	/>
               </div>
             </div>
