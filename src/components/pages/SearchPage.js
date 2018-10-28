@@ -2,7 +2,9 @@ import { NavLink } from 'react-router-dom'
 import React, { Component } from 'react'
 import * as BooksAPI from '../../BooksAPI'
 import escapeRegExp from 'escape-string-regexp'
+import MainPage from './MainPage'
 import sortBy from 'sort-by'
+import Book from '../Book.js'
 
 
 class SearchPage extends Component {
@@ -25,7 +27,7 @@ class SearchPage extends Component {
           books: props.books.filter((b)=> b.id !== book.id).concat(book) //filter through books- concat those not there
         }))})}   
 
-  updateQuery = (query) => {
+  search = (query) => {
   	this.setState({query: query.trim()})
   }
 
@@ -35,7 +37,7 @@ class SearchPage extends Component {
 
 		if(this.state.query) {
 			const match = new RegExp(escapeRegExp(this.state.query), 'i')
-			searchResults = this.props.books.filter((books)=> match.test(books.title))
+			searchResults = this.state.books.filter((book)=> match.test(this.state.books.title || this.state.books.author))
 			searchResults.sort(sortBy('name'))
 		} 
 
@@ -50,12 +52,19 @@ class SearchPage extends Component {
                	type="text" //user enters text
                	placeholder="Search by title or author"
                	value={this.state.query} 
-               	onChange={(event) => this.updateQuery(event.target.value)} //calls setState to merge new state- rerenders
+               	onChange={(event) => this.search(event.target.value)} //calls setState to merge new state- rerenders
                	/>
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+              		{/*{searchResults.map(bookList =>(
+
+              			<li key={bookList.id}> 
+              				<Book this.state.book={searchResults}/>
+              			</li>
+              			))} */}
+              	</ol>
             </div>
           </div>
         );
