@@ -11,7 +11,8 @@ class SearchPage extends Component {
 
  state = {
  books: [],
- query: ''
+ query: '',
+ searchResults: [],
 }
 
   componentDidMount() {
@@ -29,41 +30,42 @@ class SearchPage extends Component {
 
   search = (query) => {
   	this.setState({query: query.trim()})
+  	updateSearched(query)
   }
 
-	render() {
-
-		let searchResults 
-
+	updateSearched= (query)=>{
 		if(this.state.query) {
 			const match = new RegExp(escapeRegExp(this.state.query), 'i')
-			searchResults = this.state.books.filter((book)=> match.test(this.state.books.title || this.state.books.author))
+			 let searchResults = this.state.books.filter((book)=> match.test(this.state.books.title || this.state.books.author))
 			searchResults.sort(sortBy('name'))
-		} 
+			console.log(searchResults);
+		} }
+
+	render() {
 
 		return (
           <div className="search-books">
             <div className="search-books-bar">
               <NavLink to= '/'	className="close-search">Close</NavLink>
               <div className="search-books-input-wrapper">
-              {JSON.stringify(this.state.query)}
+              {/*{JSON.stringify(this.state.query)}*/}
                <input //update state and value of input field
                className="search-text"
                	type="text" //user enters text
                	placeholder="Search by title or author"
-               	value={this.state.query} 
-               	onChange={(event) => this.search(event.target.value)} //calls setState to merge new state- rerenders
+               	value={this.state.query} //calls setState to merge new state- rerender
+               	onChange={(event) => this.search(event.target.value)} 
                	/>
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid">
-              		{/*{searchResults.map(bookList =>(
-
-              			<li key={bookList.id}> 
-              				<Book this.state.book={searchResults}/>
+              <ol className="books-grid"> {/*display books matching searchResults*/}
+              		{this.state.searchResults.map((searchResult) => (
+              			<li key={searchResult.id}> 
+              				<Book book={searchResult}/>
               			</li>
-              			))} */}
+              			))}
+              
               	</ol>
             </div>
           </div>
