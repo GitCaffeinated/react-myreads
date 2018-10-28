@@ -7,6 +7,7 @@ class SearchPage extends Component {
 
  state = {
  books: [],
+ query: ''
 }
 
   componentDidMount() {
@@ -22,13 +23,24 @@ class SearchPage extends Component {
           books: props.books.filter((b)=> b.id !== book.id).concat(book) //filter through books- concat those not there
         }))})}   
 
+  updateQuery = (query) => {
+  	this.setState({query: query.trim()})
+  }
+
 	render() {
 		return (
           <div className="search-books">
             <div className="search-books-bar">
               <NavLink to= '/'	className="close-search">Close</NavLink>
               <div className="search-books-input-wrapper">
-               <input type="text" placeholder="Search by title or author"/>
+              {JSON.stringify(this.state.query)}
+               <input //update state and value of input field
+               className="search-text"
+               	type="text" 
+               	placeholder="Search by title or author"
+               	value={this.state.query}
+               	onChange={(event) => this.updateQuery(event.target.value)}
+               	/>
               </div>
             </div>
             <div className="search-books-results">
