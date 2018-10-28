@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import React, { Component } from 'react'
 import * as BooksAPI from '../../BooksAPI'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 
 
 class SearchPage extends Component {
@@ -28,6 +30,15 @@ class SearchPage extends Component {
   }
 
 	render() {
+
+		let searchResults 
+
+		if(this.state.query) {
+			const match = new RegExp(escapeRegExp(this.state.query), 'i')
+			searchResults = this.props.books.filter((books)=> match.test(books.title))
+			searchResults.sort(sortBy('name'))
+		} 
+
 		return (
           <div className="search-books">
             <div className="search-books-bar">
