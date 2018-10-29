@@ -27,27 +27,28 @@ class SearchPage extends Component {
           books: props.books.filter((b)=> b.id !== book.id).concat(book) //filter through books- concat those not there
         }))})}   
 
-  updateSearched= (query)=>{
-	if(this.state.query) {
-		const match = new RegExp(escapeRegExp(this.state.query), 'i')
-		 let searchResults = this.state.books.filter((book)=> match.test(this.state.books.title || this.state.books.author))
-		searchResults.sort(sortBy('name'))
-		console.log(searchResults);
-	} }
 
-  search = (query) => {
-  	this.setState({query: query.trim()})
-  	this.updateSearched(query)
-  }
+	search = (query) => {
+	  	this.setState({query: query.trim()})
+	  	//this.updateSearched(this.query);
+	  }
 
+  
 	render() {
+		  let searchResults
+			if(this.state.query) {
+				const match = new RegExp(escapeRegExp(this.state.query), 'i')
+				searchResults = this.state.books.filter((books)=> match.test(this.state.books.title || this.state.books.author))
+				console.log({searchResults});
+				//this.state.searchResults.sort(sortBy('name'))
+			} 
 
 		return (
           <div className="search-books">
             <div className="search-books-bar">
               <NavLink to= '/'	className="close-search">Close</NavLink>
               <div className="search-books-input-wrapper">
-              {/*{JSON.stringify(this.state.query)}*/}
+              {JSON.stringify(this.state.query)}
                <input //update state and value of input field
                className="search-text"
                	type="text" //user enters text
@@ -58,13 +59,12 @@ class SearchPage extends Component {
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"> {/*display books matching searchResults*/}
+              <ol className="books-grid"> {/*display books matching searchResults
               		{this.state.searchResults.map((searchResult) => (
               			<li key={searchResult.id}> 
               				<Book book={searchResult}/>
               			</li>
-              			))}
-              
+              			))}*/}
               	</ol>
             </div>
           </div>
