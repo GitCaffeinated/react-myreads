@@ -30,18 +30,19 @@ class SearchPage extends Component {
 
 	search = (query) => {
 	  	this.setState({query: query.trim()})
-	  	//this.updateSearched(this.query);
+	  	this.updateSearched(query);
 	  }
-
-  
-	render() {
-		  let searchResults
-			if(this.state.query) {
+	  updateSearched = (query)=> {
+	  		if(query) {
 				const match = new RegExp(escapeRegExp(this.state.query), 'i')
-				searchResults = this.state.books.filter((books)=> match.test(this.state.books.title || this.state.books.author))
+				let searchResults = this.state.books.filter((books)=> match.test(this.state.books.title || this.state.books.author))
 				console.log({searchResults});
 				//this.state.searchResults.sort(sortBy('name'))
 			} 
+
+	  }
+  
+	render() {
 
 		return (
           <div className="search-books">
@@ -59,12 +60,12 @@ class SearchPage extends Component {
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"> {/*display books matching searchResults
+              <ol className="books-grid"> {/*display books matching searchResults*/}
               		{this.state.searchResults.map((searchResult) => (
               			<li key={searchResult.id}> 
               				<Book book={searchResult}/>
               			</li>
-              			))}*/}
+              			))}
               	</ol>
             </div>
           </div>
