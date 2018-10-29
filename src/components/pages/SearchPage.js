@@ -41,7 +41,9 @@ class SearchPage extends Component {
 			let searchResults = this.state.books.filter((books)=> match.test(this.state.books.title || this.state.books.author)) //filter to match search
 			console.log({searchResults});
 			this.state.searchResults.sort(sortBy('title'))
-		} }
+		} else{
+			this.setState({searchResults: []})
+		}}
 
 	render() {
 
