@@ -28,20 +28,21 @@ class SearchPage extends Component {
         }))})}   
 
 
-	search = (query) => {
+	updateSearch = (query) => {
 	  	this.setState({query: query.trim()})
 	  	this.updateSearched(query);
 	  }
-	  updateSearched = (query)=> {
-	  		if(query) {
-				const match = new RegExp(escapeRegExp(this.state.query), 'i')
-				let searchResults = this.state.books.filter((books)=> match.test(this.state.books.title || this.state.books.author))
-				console.log({searchResults});
-				//this.state.searchResults.sort(sortBy('name'))
-			} 
 
-	  }
-  
+  updateSearched = (query)=> {
+  		BooksAPI.search(query).then((searchResults)=>
+  			this.setState(searchResults:searchResults))
+  		if(query) {
+			const match = new RegExp(escapeRegExp(this.state.query), 'i')
+			let searchResults = this.state.books.filter((books)=> match.test(this.state.books.title || this.state.books.author)) //filter to match search
+			console.log({searchResults});
+			this.state.searchResults.sort(sortBy('title'))
+		} }
+
 	render() {
 
 		return (
@@ -55,7 +56,7 @@ class SearchPage extends Component {
                	type="text" //user enters text
                	placeholder="Search by title or author"
                	value={this.state.query} //calls setState to merge new state- rerender
-               	onChange={(event) => this.search(event.target.value)} 
+               	onChange={(event) => this.updateSearch(event.target.value)} 
                	/>
               </div>
             </div>
