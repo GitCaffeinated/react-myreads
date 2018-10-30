@@ -24,26 +24,32 @@ class SearchPage extends Component {
       BooksAPI.update(book, shelf)
       .then(resp => {book.shelf = shelf;
         this.setState(props=> ({ //change shelf of books
-          books: props.books.filter((b)=> b.id !== book.id).concat(book) //filter through books- concat those not there
+          books: props.books.filter((b)=> b.id !== book.id).concat([book]) //filter through books- concat those not there
         }))})}   
 
 
 	updateSearch = (query) => {
-	  	this.setState({query: query.trim()})
+	  	this.setState({query: query})
 	  	this.updateSearched(query);
 	  }
 
-  updateSearched = (query)=> {
+  /*updateSearched = (query)=> {
   		BooksAPI.search(query).then((searchResults)=>
-  			this.setState(searchResults:searchResults))
-  		if(query) {
-			const match = new RegExp(escapeRegExp(this.state.query), 'i')
-			let searchResults = this.state.books.filter((books)=> match.test(this.state.books.title || this.state.books.author)) //filter to match search
-			console.log({searchResults});
-			this.state.searchResults.sort(sortBy('title'))
-		} else{
-			this.setState({searchResults: []})
-		}}
+        this.setState(searchResults:searchResults))
+      if(query) {
+      const match = new RegExp(escapeRegExp(this.state.query), 'i')
+      let searchResults = this.state.books.filter((books)=> match.test(this.state.books.title || this.state.books.author)) //filter to match search
+      console.log({searchResults});
+      this.state.searchResults.sort(sortBy('title'))
+    } else{
+      this.setState({searchResults: []})
+    }}*/
+
+   updateSearched = (query) => {
+        BooksAPI.search(query).then((searchResults)=> // chage state of serachResults
+          {this.setState({searchResults:searchResults})})
+    }
+
 
 	render() {
 
@@ -58,13 +64,13 @@ class SearchPage extends Component {
                	type="text" //user enters text
                	placeholder="Search by title or author"
                	value={this.state.query} //calls setState to merge new state- rerender
-               	onChange={(event) => this.updateSearch(event.target.value)} 
+               	onChange={(e) => this.updateSearch(e.target.value)} 
                	/>
               </div>
             </div>
             <div className="search-books-results">
               <ol className="books-grid"> {/*display books matching searchResults*/}
-              		{this.state.searchResults.map((searchResult) => (
+              		{this.state.searchResults.map(searchResult => (
               			<li key={searchResult.id}> 
               				<Book book={searchResult}/>
               			</li>
