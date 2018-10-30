@@ -17,7 +17,7 @@ class Book extends Component {
                   <option value="wantToRead">Want to Read</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="read">Read</option>
-                  <option value="didNotFinish">Did Not Finish</option>
+                {/*  <option value="didNotFinish">Did Not Finish</option>*/}
                   <option value="none">None</option>
                 </select>
               </div>
