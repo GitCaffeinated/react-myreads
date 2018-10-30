@@ -1,8 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import React, { Component } from 'react'
 import * as BooksAPI from '../../BooksAPI'
-import escapeRegExp from 'escape-string-regexp'
-import sortBy from 'sort-by'
 import Book from '../Book.js'
 import Shelf from '../Shelf'
 
@@ -53,6 +51,7 @@ class SearchPage extends Component {
             if(searchResults.error){ //if no results when typing/ backspace keep as array
               this.setState({searchResults: []}) 
             } else{
+
               this.setState({searchResults:searchResults})
             } } )}
     else {
@@ -80,12 +79,16 @@ class SearchPage extends Component {
             </div>
             <div className="search-books-results">
               <ol className="books-grid"> {/*display books matching searchResults*/}
-              		{this.state.searchResults.map(searchResult => (
-              			<li key={searchResult.id}> 
-              				<Book book={searchResult}
-                        updateShelf={this.updateShelf}/>
-              			</li>
-              			))}
+              		{this.state.searchResults.map(searchResult => {
+                    {this.searchResults.map(book => {book.id === searchResult.id ? this.shelf = this.book.shelf : ""})
+                    return(
+                          <li key={searchResult.id}> 
+                            <Book book={searchResult}
+                            updateShelf={this.updateShelf}
+                            currentShelf= {this.shelf}
+                           />
+                          </li>) 
+                        }}) }
               	</ol>
             </div>
           </div>
