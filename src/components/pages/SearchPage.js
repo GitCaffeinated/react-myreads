@@ -4,6 +4,7 @@ import * as BooksAPI from '../../BooksAPI'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import Book from '../Book.js'
+import Shelf from '../Shelf'
 
 
 class SearchPage extends Component {
@@ -24,9 +25,9 @@ class SearchPage extends Component {
       BooksAPI.update(book, shelf)
       .then(resp => {book.shelf = shelf;
         this.setState(props=> ({ //change shelf of books
-          books: props.books.filter((b)=> b.id !== book.id).concat([book]) //filter through books- concat those not there
+          books: props.books.filter((b)=> b.id !== book.id).concat(book) ,
+          value: this.currentShelf //filter through books- concat those not there
         }))})}   
-
 
 	updateSearch = (query) => {
 	  	this.setState({query: query})
@@ -49,7 +50,7 @@ class SearchPage extends Component {
     if (query){
             BooksAPI.search(query).then((searchResults)=> // chage state of serachResults
               {
-            if(searchResults.error){
+            if(searchResults.error){ //if no results when typing/ backspace keep as array
               this.setState({searchResults: []}) 
             } else{
               this.setState({searchResults:searchResults})
@@ -81,7 +82,8 @@ class SearchPage extends Component {
               <ol className="books-grid"> {/*display books matching searchResults*/}
               		{this.state.searchResults.map(searchResult => (
               			<li key={searchResult.id}> 
-              				<Book book={searchResult}/>
+              				<Book book={searchResult}
+                        updateShelf={this.updateShelf}/>
               			</li>
               			))}
               	</ol>
