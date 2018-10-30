@@ -37,7 +37,7 @@ class SearchPage extends Component {
   		BooksAPI.search(query).then((searchResults)=>
         this.setState(searchResults:searchResults))
       if(query) {
-      const match = new RegExp(escapeRegExp(this.state.query), 'i')
+      const match = new RegExp(escapeRegExp(this.state.query), 'i') //remove this.state
       let searchResults = this.state.books.filter((books)=> match.test(this.state.books.title || this.state.books.author)) //filter to match search
       console.log({searchResults});
       this.state.searchResults.sort(sortBy('title'))
@@ -46,13 +46,17 @@ class SearchPage extends Component {
     }}*/
 
    updateSearched = (query) => {
-        BooksAPI.search(query).then((searchResults)=> // chage state of serachResults
-          {this.setState({searchResults:searchResults})})
-    }
+    if (query){
+            BooksAPI.search(query).then((searchResults)=> // chage state of serachResults
+              {this.setState({searchResults:searchResults})})
+        }
+        else {
+          this.setState({searchResults: []})
+        }}
 
 
 	render() {
-
+      
 		return (
           <div className="search-books">
             <div className="search-books-bar">
