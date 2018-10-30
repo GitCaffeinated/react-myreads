@@ -80,7 +80,7 @@ class SearchPage extends Component {
             <div className="search-books-results">
               <ol className="books-grid"> {/*display books matching searchResults*/}
               		{this.state.searchResults.map(searchResult => {
-                    {this.searchResults.map(book => {book.id === searchResult.id ? this.shelf = this.book.shelf : ""})
+                    {this.state.searchResults.map(book => {book.id === searchResult.id ? this.shelf = this.book.shelf : ""})
                     return(
                           <li key={searchResult.id}> 
                             <Book book={searchResult}
