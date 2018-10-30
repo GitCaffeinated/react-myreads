@@ -48,11 +48,16 @@ class SearchPage extends Component {
    updateSearched = (query) => {
     if (query){
             BooksAPI.search(query).then((searchResults)=> // chage state of serachResults
-              {this.setState({searchResults:searchResults})})
-        }
-        else {
-          this.setState({searchResults: []})
-        }}
+              {
+            if(searchResults.error){
+              this.setState({searchResults: []}) 
+            } else{
+              this.setState({searchResults:searchResults})
+            } } )}
+    else {
+      this.setState({searchResults: []})
+    }
+  }
 
 
 	render() {
@@ -62,7 +67,7 @@ class SearchPage extends Component {
             <div className="search-books-bar">
               <NavLink to= '/'	className="close-search">Close</NavLink>
               <div className="search-books-input-wrapper">
-              {JSON.stringify(this.state.query)}
+              {/*{JSON.stringify(this.state.query)}*/}
                <input //update state and value of input field
                className="search-text"
                	type="text" //user enters text
