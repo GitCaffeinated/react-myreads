@@ -7,11 +7,6 @@ import Shelf from '../Shelf'
 
 class SearchPage extends Component {
 
- state = {
- books: [],
- query: '',
- searchResults: [],
-}
 
   componentDidMount() {
     BooksAPI.getAll().then((books)=>{
@@ -72,7 +67,7 @@ class SearchPage extends Component {
                className="search-text"
                	type="text" //user enters text
                	placeholder="Search by title or author"
-               	value={this.state.query} //calls setState to merge new state- rerender
+               	value={this.query} //calls setState to merge new state- rerender
                	onChange={(e) => this.updateSearch(e.target.value)} 
                	/>
               </div>

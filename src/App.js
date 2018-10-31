@@ -7,8 +7,11 @@ import * as BooksAPI from './BooksAPI'
 
 class BooksApp extends Component {
 
+ 
  state = {
  books: [],
+ query: '',
+ searchResults: [],
 }
 
   componentDidMount() {
