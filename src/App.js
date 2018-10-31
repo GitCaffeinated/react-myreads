@@ -27,6 +27,21 @@ updateShelf=  (book, shelf) =>
           books: props.books.filter((b)=> b.id !== book.id).concat(book) ,
           value: this.currentShelf //filter through books- concat those not there
         }))})}   
+
+ updateSearched = (query) => {
+    if (query){
+            BooksAPI.search(query).then((searchResults)=> // chage state of serachResults
+              {
+            if(searchResults.error){ //if no results when typing/ backspace keep as array
+              this.setState({searchResults: []}) 
+            } else{
+
+              this.setState({searchResults:searchResults})
+            } } )}
+    else {
+      this.setState({searchResults: []})
+    }
+  }
       
   render() {
 

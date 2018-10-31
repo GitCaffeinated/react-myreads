@@ -24,22 +24,6 @@ class SearchPage extends Component {
       this.setState({searchResults: []})
     }}*/
 
-   updateSearched = (query) => {
-    if (query){
-            BooksAPI.search(query).then((searchResults)=> // chage state of serachResults
-              {
-            if(searchResults.error){ //if no results when typing/ backspace keep as array
-              this.setState({searchResults: []}) 
-            } else{
-
-              this.setState({searchResults:searchResults})
-            } } )}
-    else {
-      this.setState({searchResults: []})
-    }
-  }
-
-
 	render() {
       
 		return (
@@ -59,12 +43,12 @@ class SearchPage extends Component {
             </div>
             <div className="search-books-results">
               <ol className="books-grid"> {/*display books matching searchResults*/}
-              		{this.state.searchResults.map(searchResult => {
+              		{this.props.searchResults.map(searchResult => {
                     //{this.state.books.map((book) => {book.id === searchResult.id ? this.currentShelf = book.shelf : ""})
                     return(
                           <li key={searchResult.id}> 
                             <Book book={searchResult}
-                            updateShelf={this.updateShelf}
+                            updateShelf={this.props.updateShelf}
                             currentShelf= {this.shelf}
                            />
                           </li>) 
