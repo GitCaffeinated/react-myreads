@@ -14,9 +14,14 @@ class MainPage extends Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <Shelf currentShelf= "wantToRead" updateShelf = {this.updateShelf} title="Want to Read" books={this.state.books.filter(books => books.shelf === "wantToRead")}/>
-              <Shelf currentShelf= "currentlyReading" updateShelf = {this.updateShelf} title="Currently Reading" this.books={this.state.books.filter(books => books.shelf === "currentlyReading")}/>
-              <Shelf currentShelf= "read" updateShelf = {this.updateShelf} title="Read" this.books={this.state.books.filter(books => books.shelf === "read")}/>
+              <Shelf currentShelf= "wantToRead" 
+                updateShelf = {this.updateShelf} 
+                  title="Want to Read" 
+                    books={this.state.books.filter
+                        (book =>
+                         this.state.books.shelf === "wantToRead")}/>
+              <Shelf currentShelf= "currentlyReading" updateShelf = {this.updateShelf} title="Currently Reading" books={this.state.books.filter(books => books.shelf === "currentlyReading")}/>
+              <Shelf currentShelf= "read" updateShelf = {this.updateShelf} title="Read" books={this.state.books.filter(books => books.shelf === "read")}/>
               {/*<Shelf currentShelf= "didNotFinish" updateShelf = {this.updateShelf} title="Did Not Finish" books={this.state.books.filter(books => books.shelf === "didNotFinish")}/>*/}
             </div>
             <div className="open-search">
