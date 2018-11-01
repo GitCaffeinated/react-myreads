@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import * as BooksAPI from '../../BooksAPI'
 import Book from '../Book.js'
 import Shelf from '../Shelf'
+import '../../App'
 
 
 class SearchPage extends Component {
@@ -18,14 +19,7 @@ class SearchPage extends Component {
           this.setState({books: books})}
     ) }
 
- updateShelf=  (book, shelf) =>
-    { 
-      BooksAPI.update(book, shelf)
-      .then(resp => {book.shelf = shelf;
-        this.setState(props=> ({ //change shelf of books
-          books: props.books.filter((b)=> b.id !== book.id).concat(book) ,
-          value: this.currentShelf //filter through books- concat those not there
-        }))})}   
+
 
 	updateSearch = (query) => {
 	  	this.setState({query: query})
@@ -80,17 +74,17 @@ class SearchPage extends Component {
             <div className="search-books-results">
               <ol className="books-grid"> {/*display books matching searchResults*/}
               		{this.state.searchResults.map(searchResult => {
-                    this.shelf = this.currentShelf || "none" 
+                   this.shelf = this.currentShelf || "none" 
                     console.log({searchResult});
                     //{e =>this.props.updateShelf(this.props.book, e.target.value)}
-                    //{this.state.books.map((book) => {book.id === searchResult.id ? this.currentShelf = book.shelf : ""})
+                    {this.state.books.map((book) => {book.id === searchResult.id ? this.currentShelf = book.shelf : ""})
                     return(
                           <li key={searchResult.id}> 
                             <Book book={searchResult}
                             updateShelf={this.updateShelf}
                            />
                           </li>) 
-                        }) }
+                        } } ) }
               	</ol>
             </div>
           </div>

@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import React, { Component } from 'react'
 import Shelf from '../Shelf'
 import * as BooksAPI from '../../BooksAPI'
+import '../../App'
 
 
 class MainPage extends Component {    
@@ -15,15 +16,6 @@ class MainPage extends Component {
     BooksAPI.getAll().then((books)=>{
           this.setState({books: books})}
     ) }
-
- updateShelf=  (book, shelf) =>
-    { 
-      BooksAPI.update(book, shelf)
-      .then(resp => {book.shelf = shelf;
-        this.setState(props=> ({ //change shelf of books
-          books: props.books.filter((b)=> b.id !== book.id).concat(book) ,
-          value: this.currentShelf //filter through books- concat those not there
-        }))})}   
 
 
 	render() {
