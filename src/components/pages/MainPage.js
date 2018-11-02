@@ -5,20 +5,7 @@ import * as BooksAPI from '../../BooksAPI'
 import '../../App'
 
 
-class MainPage extends Component {    
-
-
- state = {
- books: [],
-}
-
-  componentDidMount() {
-    BooksAPI.getAll().then((books)=>{
-          this.setState({books: books})}
-    ) }
-
-
-	render() {
+const MainPage = ({books, updateShelf}) =>{    
 
 		return (
           <div className="list-books">
@@ -26,9 +13,9 @@ class MainPage extends Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <Shelf currentShelf= "wantToRead" updateShelf = {this.updateShelf} title="Want to Read" books={this.state.books.filter(books => books.shelf === "wantToRead")}/>
-              <Shelf currentShelf= "currentlyReading" updateShelf = {this.updateShelf} title="Currently Reading" books={this.state.books.filter(books => books.shelf === "currentlyReading")}/>
-              <Shelf currentShelf= "read" updateShelf = {this.updateShelf} title="Read" books={this.state.books.filter(books => books.shelf === "read")}/>
+              <Shelf currentShelf= "wantToRead" updateShelf = {updateShelf} title="Want to Read" books={books.filter(books => books.shelf === "wantToRead")}/>
+              <Shelf currentShelf= "currentlyReading" updateShelf = {updateShelf} title="Currently Reading" books={books.filter(books => books.shelf === "currentlyReading")}/>
+              <Shelf currentShelf= "read" updateShelf = {updateShelf} title="Read" books={books.filter(books => books.shelf === "read")}/>
               {/*<Shelf currentShelf= "didNotFinish" updateShelf = {this.updateShelf} title="Did Not Finish" books={this.state.books.filter(books => books.shelf === "didNotFinish")}/>*/}
             </div>
             <div className="open-search">
@@ -36,6 +23,6 @@ class MainPage extends Component {
             </div>
           </div>
       );}
-    }
+    
 
 export default MainPage;

@@ -22,26 +22,17 @@ class BooksApp extends Component {
       .then(resp => {book.shelf = shelf;
         this.setState(props=> ({ //change shelf of books
           books: props.books.filter((b)=> b.id !== book.id).concat(book) ,
-          value: this.currentShelf //filter through books- concat those not there
+         // value: this.currentShelf //filter through books- concat those not there
         }))})}   
 
   render() {
 
     return(
       <div>
-     render={() => (
-            <MainPage books={this.state.books} updateShelf={this.updateShelf} />
-          )}
-        />
-        <Route
-          exact
-          path="/search"
-          render={() => (
-            <SearchPage
-              books={this.state.books}
-              updateShelf={this.updateShelf}
-            /> )}
-        />
+      <Route
+          exact path="/" render={() => ( <MainPage books={this.state.books} updateShelf={this.updateShelf} />)} />
+        <Route 
+        exact path="/search" render={() => (<SearchPage books={this.state.books} updateShelf={this.updateShelf} /> )}/>
       </div>
       );
  }
