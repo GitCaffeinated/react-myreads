@@ -13,9 +13,12 @@ const MainPage = ({books, updateShelf}) =>{
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <Shelf currentShelf= "wantToRead" updateShelf = {updateShelf} title="Want to Read" books={books.filter(books => books.shelf === "wantToRead")}/>
-              <Shelf currentShelf= "currentlyReading" updateShelf = {updateShelf} title="Currently Reading" books={books.filter(books => books.shelf === "currentlyReading")}/>
-              <Shelf currentShelf= "read" updateShelf = {updateShelf} title="Read" books={books.filter(books => books.shelf === "read")}/>
+              <Shelf  updateShelf={updateShelf} 
+                title="Want to Read" books={books.filter(books => books.shelf === "wantToRead")}/>
+              <Shelf updateShelf={updateShelf} 
+                title="Currently Reading" books={books.filter(books => books.shelf === "currentlyReading")}/>
+              <Shelf  updateShelf={updateShelf} 
+                title="Read" books={books.filter(books => books.shelf === "read")}/>
               {/*<Shelf currentShelf= "didNotFinish" updateShelf = {this.updateShelf} title="Did Not Finish" books={this.state.books.filter(books => books.shelf === "didNotFinish")}/>*/}
             </div>
             <div className="open-search">

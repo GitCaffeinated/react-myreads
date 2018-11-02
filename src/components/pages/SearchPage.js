@@ -19,24 +19,10 @@ class SearchPage extends Component {
           this.setState({books: books})}
     ) }
 
-
-
 	updateSearch = (query) => {
 	  	this.setState({query: query})
 	  	this.updateSearched(query);
 	  }
-
-  /*updateSearched = (query)=> {
-  		BooksAPI.search(query).then((searchResults)=>
-        this.setState(searchResults:searchResults))
-      if(query) {
-      const match = new RegExp(escapeRegExp(this.state.query), 'i') //remove this.state
-      let searchResults = this.state.books.filter((books)=> match.test(this.state.books.title || this.state.books.author)) //filter to match search
-      console.log({searchResults});
-      this.state.searchResults.sort(sortBy('title'))
-    } else{
-      this.setState({searchResults: []})
-    }}*/
 
    updateSearched = (query) => {
     if (query){
@@ -52,7 +38,6 @@ class SearchPage extends Component {
       this.setState({searchResults: []})
     }
   }
-
 
 	render() {
       
@@ -74,14 +59,14 @@ class SearchPage extends Component {
             <div className="search-books-results">
               <ol className="books-grid"> {/*display books matching searchResults*/}
               		{this.state.searchResults.map(searchResult => {
-                   this.shelf = this.currentShelf || "none" 
-                    console.log({searchResult});
+                   //this.shelf = this.currentShelf || "none" 
+                   // console.log({searchResult});
                     //{e =>this.props.updateShelf(this.props.book, e.target.value)}
-                    {this.props.books.map((book) => {book.id === searchResult.id ? searchResult.shelf = book.shelf : null})
+                    {this.props.books.map((book) => {book.id === searchResult.id ? (searchResult.shelf = book.shelf ): null})
                     return(
                           <li key={searchResult.id}> 
                             <Book book={searchResult}
-                            updateShelf={this.updateShelf}
+                            updateShelf={this.props.updateShelf}
                            />
                           </li>) 
                         } } ) }
