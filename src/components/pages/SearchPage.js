@@ -51,7 +51,7 @@ class SearchPage extends Component {
                className="search-text"
                	type="text" //user enters text
                	placeholder="Search by title or author"
-               	value={this.state.query} //calls setState to merge new state- rerender
+               	value={this.state.query} 
                	onChange={(e) => this.updateSearch(e.target.value)} 
                	/>
               </div>
@@ -59,9 +59,7 @@ class SearchPage extends Component {
             <div className="search-books-results">
               <ol className="books-grid"> {/*display books matching searchResults*/}
               		{this.state.searchResults.map(searchResult => {
-                   //this.shelf = this.currentShelf || "none" 
-                   // console.log({searchResult});
-                    //{e =>this.props.updateShelf(this.props.book, e.target.value)}
+              
                     {this.props.books.map((book) => {book.id === searchResult.id ? (searchResult.shelf = book.shelf ): null})
                     return(
                           <li key={searchResult.id}> 

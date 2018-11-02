@@ -22,7 +22,7 @@ class BooksApp extends Component {
       .then(resp => {book.shelf = shelf;
         this.setState(props=> ({ //change shelf of books
           books: props.books.filter((b)=> b.id !== book.id).concat(book) ,
-         // value: this.currentShelf //filter through books- concat those not there
+         //filter through books- concat those not there
         }))})}   
 
   render() {
@@ -39,5 +39,3 @@ class BooksApp extends Component {
 }
 export default BooksApp
 
-
-/// in dropdown- value doesn't change

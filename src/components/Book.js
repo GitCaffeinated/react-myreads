@@ -25,6 +25,6 @@ const Book= ({book, updateShelf })=>{
             <div className="book-authors">{book.authors || "Author Not Found"}</div>
             <div className="average-rating">{book.averageRating || "No Rating"}</div>
           </div>
-        ) } 
+  ) } 
         
 export default Book;
