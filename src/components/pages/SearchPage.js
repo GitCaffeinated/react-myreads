@@ -77,7 +77,7 @@ class SearchPage extends Component {
                    this.shelf = this.currentShelf || "none" 
                     console.log({searchResult});
                     //{e =>this.props.updateShelf(this.props.book, e.target.value)}
-                    {this.state.books.map((book) => {book.id === searchResult.id ? this.currentShelf = book.shelf : ""})
+                    {this.props.books.map((book) => {book.id === searchResult.id ? searchResult.shelf = book.shelf : null})
                     return(
                           <li key={searchResult.id}> 
                             <Book book={searchResult}
