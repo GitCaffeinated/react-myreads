@@ -1,8 +1,8 @@
 
 
-## TL;DR
+## Start
 
-To get started developing right away:
+To get started viewing right away:
 
 * clone or download git repository
 * cd into repository
