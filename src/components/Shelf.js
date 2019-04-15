@@ -1,5 +1,5 @@
 import Book from './Book.js'
-import React, { Component } from 'react'
+import React from 'react'
 
 const Shelf = ({updateShelf, title, books}) => {
 

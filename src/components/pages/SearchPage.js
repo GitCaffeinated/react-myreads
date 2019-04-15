@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom'
 import React, { Component } from 'react'
 import * as BooksAPI from '../../BooksAPI'
 import Book from '../Book.js'
-import Shelf from '../Shelf'
 import '../../App'
 
 
