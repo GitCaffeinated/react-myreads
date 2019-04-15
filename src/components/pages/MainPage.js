@@ -19,7 +19,6 @@ const MainPage = ({books, updateShelf}) =>{
                 title="Currently Reading" books={books.filter(books => books.shelf === "currentlyReading")}/>
               <Shelf  updateShelf={updateShelf} 
                 title="Read" books={books.filter(books => books.shelf === "read")}/>
-              {/*<Shelf currentShelf= "didNotFinish" updateShelf = {this.updateShelf} title="Did Not Finish" books={this.state.books.filter(books => books.shelf === "didNotFinish")}/>*/}
             </div>
             <div className="open-search">
               <NavLink to='/search' className="to-search-bar">Add a book</NavLink>
