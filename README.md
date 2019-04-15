@@ -19,7 +19,7 @@ To get started viewing right away:
 
 ##About The App
 
-	Using primarily the React library (primarially stateless functional components and state changes) 
+	Using primarily the React library (primarily stateless functional components and state changes)
 	this app creates shelving and book components. 
 	The user can search for their favorite books and authors to add to the shelves and 
 	move books around between shelves.
