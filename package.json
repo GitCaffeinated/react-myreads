@@ -1,4 +1,8 @@
 {
+  "name": "react-myreads",
+  "author": "Jenna Koslowski",
+  "homepage": "https://github.com/JennaKoslowski/jennakoslowski.github.io/blob/master/pages/index.html",
+  "private": true,
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
     "prop-types": "^15.6.2",
