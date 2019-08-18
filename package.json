@@ -1,7 +1,7 @@
 {
   "name": "react-myreads",
   "author": "Jenna Koslowski",
-  "homepage": "https://github.com/JennaKoslowski/react-myreads/blob/master/public/index.html",
+  "homepage": "https://jennakoslowski.github.io/react-myreads/",
   "private": true,
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
@@ -21,6 +21,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "master -d build"
   }
 }
